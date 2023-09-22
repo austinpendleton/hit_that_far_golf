@@ -1,0 +1,29 @@
+.logo__conatainer {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+.logo {
+  max-height: 100%;
+  border-radius: 200px;
+}
+.navbar__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  top: -60px;
+}
+.navbar__buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 30px;
+}
+.navbar__home {
+  cursor: pointer;
+  text-decoration: none;
+}
+.navbar__bag {
+  cursor: pointer;
+  text-decoration: none;
+}

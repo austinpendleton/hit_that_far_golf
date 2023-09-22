@@ -1,0 +1,15 @@
+.home__form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: bisque;
+  margin-top: 50px;
+
+  width: 500px;
+  border-radius: 20px;
+}
+.home__form-text-container {
+  display: flex;
+  padding-bottom: 30px;
+}
