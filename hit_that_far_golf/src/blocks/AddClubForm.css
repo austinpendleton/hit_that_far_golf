@@ -23,15 +23,6 @@
   font-size: 16px;
 }
 .modal__button-submit {
-  /* height: 36px;
-  width: 124px;
-  margin-bottom: 36px;
-  border-radius: 4px;
-  background-color: black;
-  color: white;
-  line-height: 20px;
-  font-size: 16px;
-  border: none; */
   margin: 32px 0 0 0;
   padding: 0;
   background: none;
@@ -42,10 +33,12 @@
   background-color: black;
   color: white;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 25px;
   line-height: 20px;
 
-  font-weight: 700;
+  font-weight: 500;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-style: italic;
 }
 .modal__button-container {
   display: flex;

@@ -18,12 +18,26 @@
   display: flex;
   justify-content: space-evenly;
   padding-top: 30px;
-}
-.navbar__home {
+  color: black;
+  border: none;
+  background-color: transparent;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 20px;
+  font-style: italic;
   cursor: pointer;
   text-decoration: none;
 }
+.navbar__home:visited {
+  text-decoration: none;
+  color: black;
+}
+.navbar__bag:visited {
+  text-decoration: none;
+  color: black;
+}
 .navbar__bag {
-  cursor: pointer;
+  text-decoration: none;
+}
+.navbar__home {
   text-decoration: none;
 }

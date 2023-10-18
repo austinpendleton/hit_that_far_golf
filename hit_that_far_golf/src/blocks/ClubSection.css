@@ -1,0 +1,25 @@
+.clubs {
+  width: 100%;
+}
+.clubs__container {
+  display: flex;
+  width: 100%;
+}
+.clubs__title {
+  position: absolute;
+  top: 120px;
+  width: 94px;
+  height: 25px;
+  font-size: 20px;
+  line-height: 25px;
+  font-style: normal;
+  color: #000;
+}
+.clubs__list {
+  display: grid;
+  justify-self: end;
+  grid-gap: 20px;
+  padding: 0;
+  grid-template-columns: repeat(3, 328px);
+  margin: 40px 0 0 0;
+}

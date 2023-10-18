@@ -3,193 +3,19 @@ import ModalWithForm from "./ModalWithForm";
 import { avgDistance } from "../utils/constants";
 import { useEffect, useState } from "react";
 
-// const AddClubForm = ({ onClose, onAddToBag, onSubmit }) => {
-//   //   const [clubs] = useState("");
-//   const [clubs, setClubs] = useState("");
-
-//   function handleSubmit(evt) {
-//     evt.preventDefault();
-//     onAddToBag({ clubs });
-//   }
-
-//   return (
-//     <div className="modal">
-//       <div className="modal__content">
-//         <button
-//           type="button"
-//           className="modal__button-close"
-//           onClick={onClose}
-//         ></button>
-//         <h3 className="modal__title">Add clubs</h3>
-//         {/* <p className="modal__text">Add a x to my bag.</p> */}
-//         <div className="modal__radios">
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>Driver</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>3 wood</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>4 wood</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>5 wood</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>3 hybrid</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>4 hybrid</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>5 hybrid</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>9 iron</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>8 iron</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>7 iron</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>6 iron</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>5 iron</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>Pitching Wedge</label>
-//           </div>
-//           <div className="modal__radio">
-//             <input
-//               className="modal__radio-input"
-//               type="radio"
-//               value={clubs}
-//               onChange={(e) => setClubs(e.target.value)}
-//             />
-
-//             <label>Sand Wedge</label>
-//           </div>
-//         </div>
-//         <div className="modal__button-container">
-//           <button
-//             onClick={handleSubmit}
-//             type="submit"
-//             className="modal__button-submit"
-//           >
-//             Submit
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
 function AddClubForm({ onClose, isOpen, onAddClub }) {
-  const [clubs, setClubs] = useState("");
+  const [name, setName] = useState("");
   const [imageUrl, setimageUrl] = useState("");
+  const [yards, setYards] = useState("");
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAddClub({ clubs });
+    onAddClub({ name, yards, imageUrl });
   }
 
   useEffect(() => {
     if (isOpen) {
-      setClubs("");
+      setName("");
     }
   }, [isOpen]);
 
@@ -205,9 +31,21 @@ function AddClubForm({ onClose, isOpen, onAddClub }) {
             name="name"
             minLength="1"
             maxLength="300"
-            value={clubs}
+            value={name}
             onChange={(evt) => {
-              setClubs(evt.target.value);
+              setName(evt.target.value);
+            }}
+          />
+        </label>
+        <label className="modal__label">
+          Comfortable Hitting This Club
+          <input
+            className="modal__input"
+            type="number"
+            placeholder="Yards"
+            value={yards}
+            onChange={(evt) => {
+              setYards(evt.target.value);
             }}
           />
         </label>
