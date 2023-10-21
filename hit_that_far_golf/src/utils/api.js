@@ -39,3 +39,13 @@ export const signUp = ({ name, email, password }) => {
     body: JSON.stringify({ name, email, password }),
   }).then(processServerResponse);
 };
+
+export const deleteClubs = (_id, token) => {
+  return fetch(`${base_url}/items/${_id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(processServerResponse);
+};

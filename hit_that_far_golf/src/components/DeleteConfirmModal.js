@@ -22,7 +22,6 @@ const DeleteConfirmModal = ({
           <p className="delete__text-confirm">
             Are you sure you want to delete this item?
           </p>
-          <p className="delete__text-confirm">This action is irreversible.</p>
         </div>
         <button
           className="delete__button_confirm"
@@ -30,7 +29,7 @@ const DeleteConfirmModal = ({
           aria-label="Confirm"
           type="button"
         >
-          Yes, delete item
+          Delete
         </button>
         <button
           className="delete__button_cancel"

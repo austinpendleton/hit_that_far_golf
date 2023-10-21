@@ -24,7 +24,9 @@ const ClubPreview = ({
           className="item__modal-image"
           alt={item?.name}
         />
+
         <div className="item__modal-description">{item?.name}</div>
+        <div className="item__modal-description">{item?.yards} yards</div>
 
         {isUser && (
           <button

@@ -10,18 +10,22 @@ const MyBag = ({ onAddClub, cards, handleOpenConfirmModal, onSelectClub }) => {
   };
   return (
     <>
+      <button className="add__button" onClick={onAddClub}>
+        Add clubs
+      </button>
       <div className="clubs__container">
         <ClubSection
           cards={cards}
           onClick={handleOpenConfirmModal}
           onClubClick={handleClubClick}
         />
-        <section className="cards">
+        {/* <section className="cards">
+          <div className="clubs__title">My Bag:</div>
+          <button className="add__button" onClick={onAddClub}>
+            Add clubs
+          </button>
           <ul className="clubs__list"></ul>
-        </section>
-        <button className="add__button" onClick={onAddClub}>
-          Add clubs
-        </button>
+        </section> */}
       </div>
     </>
   );

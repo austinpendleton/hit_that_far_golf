@@ -6,7 +6,6 @@ const ClubSection = ({ cards, onClubClick, handleOpenConfirmModal }) => {
   return (
     <div className="clubs">
       <div className="clubs__container">
-        <div className="clubs__title">My Bag:</div>
         <ul className="clubs__list">
           {cards.map((card) => (
             <ClubCard

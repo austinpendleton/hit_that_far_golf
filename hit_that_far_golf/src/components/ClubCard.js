@@ -21,11 +21,12 @@ const ClubCard = ({ item, onSelectClub, handleOpenConfirmModal, data }) => {
 
       <div className="card__container">
         <div className="card__name">{item?.name}</div>
-        {isUser && (
+        <div className="card__name">{item?.yards} yards</div>
+        {/* {isUser && (
           <button className="card__trash" onClick={handleOpenConfirmModal}>
             DELETE
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );

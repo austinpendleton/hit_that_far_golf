@@ -7,13 +7,13 @@
 }
 .card__name {
   text-align: center;
-  position: relative;
-  top: 58px;
+
   max-width: 200px;
 
   border-radius: 4px;
   padding: 2px 12px;
-
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
   color: rgba(0, 0, 0, 0.6);
   font-size: 16px;
   line-height: 20px;
@@ -21,8 +21,8 @@
   background-color: #fff;
 }
 .card__image {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 10px;
 }
 .card__image:hover {
@@ -44,6 +44,11 @@
   border: black;
   border-style: solid;
   border-width: 5px;
+  width: fit-content;
+}
+.card:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 .card__trash {
   position: absolute;

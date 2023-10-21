@@ -79,6 +79,17 @@ function App() {
         console.log(error);
       });
   };
+
+  const handleDeleteClub = (item, _id) => {
+    const token = localStorage.getItem("jwt");
+    console.log(item);
+    api.deleteClubs(item._id, token).then(() => {
+      setclubs();
+      handleCloseModal();
+      handleCloseConfirmModal();
+    });
+  };
+
   const getClubItems = () => {
     api
       .getclubsList()
@@ -180,6 +191,7 @@ function App() {
                 item={selectedClub}
                 handleOpenConfirmModal={handleOpenConfirmModal}
                 handleClubClick={handleSelectedClub}
+                onClose={handleCloseModal}
               />
             )}
             {activeModal === "register" && (
@@ -203,6 +215,7 @@ function App() {
                 handleCloseConfirmModal={handleCloseConfirmModal}
                 onClose={handleCloseModal}
                 cards={clubs}
+                onDelete={handleDeleteClub}
               />
             )}
           </div>

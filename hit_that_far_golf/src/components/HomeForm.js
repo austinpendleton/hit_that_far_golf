@@ -5,11 +5,19 @@ const HomeForm = () => {
     <div className="home__form-container">
       <div className="home__form-text-container">
         <p className="home__form-text">
-          I am x yards to the flag, I should probably use x.
+          I am{" "}
+          <input
+            className="home__input"
+            type="number"
+            placeholder="number"
+          ></input>{" "}
+          yards to the flag, I should probably use:
         </p>
       </div>
-      <div className="home__form-text-container">
-        <p className="home__form-text">I just hit my x about x yards.</p>
+      <div className="home__button-container">
+        <button className="modal__button-submit" type="submit">
+          Submit
+        </button>
       </div>
     </div>
   );
