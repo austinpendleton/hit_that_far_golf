@@ -17,6 +17,7 @@ import DeleteConfirmModal from "./DeleteConfirmModal";
 import ClubSection from "./ClubSection";
 import ClubCard from "./ClubCard";
 import ClubPreview from "./ClubPreview";
+import Footer from "./Footer";
 document.body.style.backgroundColor = "black";
 
 function App() {
@@ -82,12 +83,19 @@ function App() {
 
   const handleDeleteClub = (item, _id) => {
     const token = localStorage.getItem("jwt");
-    console.log(item);
-    api.deleteClubs(item._id, token).then(() => {
-      setclubs();
-      handleCloseModal();
-      handleCloseConfirmModal();
-    });
+
+    api
+      .deleteClubs(item._id, token)
+      .then(() => {
+        const filteredClubs = clubs.filter((card) => card._id !== item._id);
+        console.log(filteredClubs);
+        setclubs(filteredClubs);
+        handleCloseModal();
+        handleCloseConfirmModal();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const getClubItems = () => {
@@ -122,6 +130,7 @@ function App() {
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    setclubs([]);
   };
   const handleToken = useCallback((token) => {
     return checkToken(token)
@@ -146,6 +155,50 @@ function App() {
     }
   }, [setCurrentUser, setIsLoggedIn, handleToken]);
 
+  const [yardageInput, setYardageInput] = useState("");
+
+  const [recommendedClub, setRecommendedClub] = useState(null);
+
+  const handleYardageChange = (event) => {
+    setYardageInput(event.target.value);
+  };
+
+  const GolfClubRecommendation = (event) => {
+    event.preventDefault();
+    setRecommendedClub(recommendClub(yardageInput));
+  };
+
+  const recommendClub = (yardageInput) => {
+    let recommendedClub = null;
+    for (const club of clubs) {
+      if (yardageInput >= club.yards) {
+        if (!recommendedClub || club.yards > recommendedClub.yards) {
+          recommendedClub = club;
+        }
+      }
+    }
+    return recommendedClub;
+  };
+  // function to handle the submit of the form
+  // and set the state of the recommended club
+  const handleAddClub = (event) => {
+    event.preventDefault();
+    setRecommendedClub(recommendClub(yardageInput));
+  };
+
+  const handleRecommendation = (yardageInput) => {
+    let recommendedClub = null;
+    for (const club of clubs) {
+      if (yardageInput >= club.yards) {
+        if (!recommendedClub || club.yards > recommendedClub.yards) {
+          recommendedClub = club;
+        }
+      }
+    }
+    console.log("Recommended Club: ", recommendedClub);
+    setRecommendedClub(recommendedClub); // Update the recommended club state
+  };
+
   return (
     <BrowserRouter>
       <CurrentUserContext.Provider value={currentUser}>
@@ -160,7 +213,24 @@ function App() {
             <NavBar />
 
             <Routes>
-              <Route exact path="/" element={<HomeForm />} />
+              <Route
+                exact
+                path="/"
+                element={
+                  <HomeForm
+                    handleYardageChange={handleYardageChange}
+                    handleRecommendation={handleRecommendation}
+                    GolfClubRecommendation={GolfClubRecommendation}
+                    recommendedClub={recommendedClub}
+                    yardageInput={yardageInput}
+                    clubs={clubs}
+                    recommendClub={recommendClub}
+                    setRecommendedClub={setRecommendedClub}
+                    setYardageInput={setYardageInput}
+                    handleAddClub={handleAddClub}
+                  />
+                }
+              />
               <Route
                 path="/mybag"
                 element={
@@ -174,9 +244,11 @@ function App() {
                   />
                 }
               />
+
               {/* <MyBag path="/mybag" />
             </Route> */}
             </Routes>
+
             {activeModal === "addclubs" && (
               <AddClubForm
                 onAddClub={handleAddToBag}
@@ -214,12 +286,13 @@ function App() {
               <DeleteConfirmModal
                 handleCloseConfirmModal={handleCloseConfirmModal}
                 onClose={handleCloseModal}
-                cards={clubs}
+                item={selectedClub}
                 onDelete={handleDeleteClub}
               />
             )}
           </div>
         </div>
+        <Footer />
       </CurrentUserContext.Provider>
     </BrowserRouter>
   );

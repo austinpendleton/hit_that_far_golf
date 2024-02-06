@@ -36,7 +36,8 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-style: italic;
   font-weight: 300;
-  margin-top: 150px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .add__button:hover {
   cursor: pointer;

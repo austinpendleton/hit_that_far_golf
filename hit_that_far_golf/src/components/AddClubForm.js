@@ -10,7 +10,7 @@ function AddClubForm({ onClose, isOpen, onAddClub }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAddClub({ name, yards, imageUrl });
+    onAddClub({ name, yards: parseInt(yards), imageUrl });
   }
 
   useEffect(() => {

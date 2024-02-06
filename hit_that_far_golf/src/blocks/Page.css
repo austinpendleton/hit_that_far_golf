@@ -1,11 +1,11 @@
 .content__wrapper {
-  background-color: white;
+  background-color: green;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 150vh;
-  width: 100vh;
+  height: 70rem;
+  width: 70rem;
   margin: 0px 50px 50px 50px;
   border-radius: 20px;
   border: green;
