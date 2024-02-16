@@ -159,44 +159,9 @@ function App() {
 
   const [recommendedClub, setRecommendedClub] = useState(null);
 
-  const handleYardageChange = (event) => {
-    setYardageInput(event.target.value);
-  };
-
-  const GolfClubRecommendation = (event) => {
-    event.preventDefault();
-    setRecommendedClub(recommendClub(yardageInput));
-  };
-
-  const recommendClub = (yardageInput) => {
-    let recommendedClub = null;
-    for (const club of clubs) {
-      if (yardageInput >= club.yards) {
-        if (!recommendedClub || club.yards > recommendedClub.yards) {
-          recommendedClub = club;
-        }
-      }
-    }
-    return recommendedClub;
-  };
-  // function to handle the submit of the form
-  // and set the state of the recommended club
   const handleAddClub = (event) => {
     event.preventDefault();
     setRecommendedClub(recommendClub(yardageInput));
-  };
-
-  const handleRecommendation = (yardageInput) => {
-    let recommendedClub = null;
-    for (const club of clubs) {
-      if (yardageInput >= club.yards) {
-        if (!recommendedClub || club.yards > recommendedClub.yards) {
-          recommendedClub = club;
-        }
-      }
-    }
-    console.log("Recommended Club: ", recommendedClub);
-    setRecommendedClub(recommendedClub); // Update the recommended club state
   };
 
   return (

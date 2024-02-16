@@ -3,7 +3,7 @@ import AddClubForm from "./AddClubForm";
 
 import React, { useState } from "react";
 
-const HomeForm = ({ handleRecommendation }) => {
+const HomeForm = () => {
   const [yardageInput, setYardageInput] = useState("");
   const [clubs, setClubs] = useState([]);
   const [recommendedClub, setRecommendedClub] = useState(null);
@@ -34,8 +34,17 @@ const HomeForm = ({ handleRecommendation }) => {
     return recommendedClub;
   };
 
-  const handleAddClub = (newClub) => {
-    setClubs([...clubs, newClub]);
+  const handleRecommendation = (yardageInput) => {
+    let recommendedClub = null;
+    for (const club of clubs) {
+      if (yardageInput >= club.yards) {
+        if (!recommendedClub || club.yards > recommendedClub.yards) {
+          recommendedClub = club;
+        }
+      }
+    }
+    console.log("Recommended Club: ", recommendedClub);
+    setRecommendedClub(recommendedClub); // Update the recommended club state
   };
 
   return (
