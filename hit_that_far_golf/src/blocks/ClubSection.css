@@ -5,6 +5,7 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  margin-top: 225px;
 }
 .clubs__title {
   position: absolute;
@@ -23,12 +24,19 @@
   padding: 0;
   grid-template-columns: repeat(3, 200px);
 }
+.add__button-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -30px;
+  left: 315px;
+}
 .add__button {
   border: none;
   cursor: pointer;
   height: 35px;
   width: 124px;
-  background-color: black;
+  background-color: green;
   color: white;
   border-radius: 4px;
   font-size: 20px;
@@ -36,8 +44,6 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-style: italic;
   font-weight: 300;
-  margin-bottom: 30px;
-  margin-top: 30px;
 }
 .add__button:hover {
   cursor: pointer;

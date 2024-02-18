@@ -19,4 +19,5 @@
   font-size: 20px;
   line-height: 20px;
   justify-content: space-around;
+  z-index: -1;
 }

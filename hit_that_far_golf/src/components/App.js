@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "../blocks/App.css";
 import "../blocks/Page.css";
+import "../blocks/HomeForm.css";
 import Header from "./Header";
 import NavBar from "./NavBar";
 import HomeForm from "./HomeForm";
@@ -186,6 +187,7 @@ function App() {
   };
 
   const handleRecommendation = (yardageInput) => {
+    console.log("Yardage input: ", yardageInput);
     let recommendedClub = null;
     for (const club of clubs) {
       if (yardageInput >= club.yards) {
@@ -194,8 +196,8 @@ function App() {
         }
       }
     }
-    console.log("Recommended Club: ", recommendedClub);
-    setRecommendedClub(recommendedClub); // Update the recommended club state
+
+    setRecommendedClub(recommendedClub);
   };
 
   const handleAddClub = (event) => {
@@ -232,6 +234,7 @@ function App() {
                     setRecommendedClub={setRecommendedClub}
                     setYardageInput={setYardageInput}
                     handleAddClub={handleAddClub}
+                    onSelectClub={handleSelectedClub}
                   />
                 }
               />
@@ -252,6 +255,11 @@ function App() {
               {/* <MyBag path="/mybag" />
             </Route> */}
             </Routes>
+            {recommendedClub && (
+              <div className="recommended__club">
+                <ClubCard item={recommendedClub} />
+              </div>
+            )}
 
             {activeModal === "addclubs" && (
               <AddClubForm
@@ -296,7 +304,7 @@ function App() {
             )}
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </CurrentUserContext.Provider>
     </BrowserRouter>
   );

@@ -1,12 +1,20 @@
 import "../blocks/HomeForm.css";
 import AddClubForm from "./AddClubForm";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-const HomeForm = () => {
+const HomeForm = ({ handleRecommendation }) => {
   const [yardageInput, setYardageInput] = useState("");
   const [clubs, setClubs] = useState([]);
   const [recommendedClub, setRecommendedClub] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setRecommendedClub(null);
+    }
+  }, [location.pathname]);
 
   function handleYardageChange(event) {
     setYardageInput(event.target.value);
@@ -20,6 +28,15 @@ const HomeForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     GolfClubRecommendation(event);
+    handleRecommendation(yardageInput);
+    console.log("Form submitted");
+  };
+
+  const handleReset = () => {
+    console.log("Before reset:", recommendedClub);
+    setYardageInput("");
+    setRecommendedClub(null);
+    console.log("After reset:", recommendedClub);
   };
 
   const recommendClub = (yardageInput) => {
@@ -32,19 +49,6 @@ const HomeForm = () => {
       }
     }
     return recommendedClub;
-  };
-
-  const handleRecommendation = (yardageInput) => {
-    let recommendedClub = null;
-    for (const club of clubs) {
-      if (yardageInput >= club.yards) {
-        if (!recommendedClub || club.yards > recommendedClub.yards) {
-          recommendedClub = club;
-        }
-      }
-    }
-    console.log("Recommended Club: ", recommendedClub);
-    setRecommendedClub(recommendedClub); // Update the recommended club state
   };
 
   return (
@@ -62,7 +66,7 @@ const HomeForm = () => {
             ></input>{" "}
             yards to the flag, I should probably use:
           </p>
-          <div>
+          <div className="recommended__club">
             {recommendedClub && (
               <div>
                 <h3>{recommendedClub.name}</h3>
@@ -78,9 +82,16 @@ const HomeForm = () => {
           <button
             className="modal__button-submit"
             type="submit"
-            onClick={GolfClubRecommendation}
+            onClick={handleSubmit}
           >
             Submit
+          </button>
+          <button
+            className="modal__button-reset"
+            type="reset"
+            onClick={handleReset}
+          >
+            Reset
           </button>
         </div>
       </form>

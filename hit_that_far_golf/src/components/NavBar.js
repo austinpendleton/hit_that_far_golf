@@ -1,4 +1,4 @@
-import logo from "../images/i-can-hit-that-far-white.svg";
+import logo from "../images/app-logo-edit.svg";
 import "../blocks/NavBar.css";
 import { Link } from "react-router-dom";
 
