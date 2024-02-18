@@ -22,14 +22,15 @@
 .navbar__buttons {
   display: flex;
   justify-content: space-evenly;
-  color: black;
+  color: green;
   border: none;
   background-color: transparent;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 20px;
+  font-size: 30px;
   font-style: italic;
   cursor: pointer;
   text-decoration: none;
+  margin-top: 40px;
 }
 .navbar__bag:hover {
   cursor: pointer;
@@ -41,11 +42,11 @@
 }
 .navbar__home:visited {
   text-decoration: none;
-  color: black;
+  color: green;
 }
 .navbar__bag:visited {
   text-decoration: none;
-  color: black;
+  color: green;
 }
 .navbar__bag {
   text-decoration: none;

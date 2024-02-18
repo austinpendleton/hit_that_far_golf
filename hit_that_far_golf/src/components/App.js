@@ -29,6 +29,10 @@ function App() {
   const [deleteModal, setDeleteModal] = useState(false);
   const [selectedClub, setSelectedClub] = useState(null);
 
+  const [yardageInput, setYardageInput] = useState("");
+
+  const [recommendedClub, setRecommendedClub] = useState(null);
+
   const handleclubsModal = () => {
     setActiveModal("addclubs");
   };
@@ -155,9 +159,44 @@ function App() {
     }
   }, [setCurrentUser, setIsLoggedIn, handleToken]);
 
-  const [yardageInput, setYardageInput] = useState("");
+  function handleYardageChange(event) {
+    setYardageInput(event.target.value);
+  }
 
-  const [recommendedClub, setRecommendedClub] = useState(null);
+  function GolfClubRecommendation(event) {
+    event.preventDefault();
+    setRecommendedClub(recommendClub(yardageInput));
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    GolfClubRecommendation(event);
+  };
+
+  const recommendClub = (yardageInput) => {
+    let recommendedClub = null;
+    for (const club of clubs) {
+      if (yardageInput >= club.yards) {
+        if (!recommendedClub || club.yards > recommendedClub.yards) {
+          recommendedClub = club;
+        }
+      }
+    }
+    return recommendedClub;
+  };
+
+  const handleRecommendation = (yardageInput) => {
+    let recommendedClub = null;
+    for (const club of clubs) {
+      if (yardageInput >= club.yards) {
+        if (!recommendedClub || club.yards > recommendedClub.yards) {
+          recommendedClub = club;
+        }
+      }
+    }
+    console.log("Recommended Club: ", recommendedClub);
+    setRecommendedClub(recommendedClub); // Update the recommended club state
+  };
 
   const handleAddClub = (event) => {
     event.preventDefault();
@@ -257,7 +296,7 @@ function App() {
             )}
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </CurrentUserContext.Provider>
     </BrowserRouter>
   );

@@ -73,16 +73,15 @@ const HomeForm = () => {
               </div>
             )}
           </div>
-
-          <div className="home__button-container">
-            <button
-              className="modal__button-submit"
-              type="submit"
-              onClick={GolfClubRecommendation}
-            >
-              Submit
-            </button>
-          </div>
+        </div>
+        <div className="home__button-container">
+          <button
+            className="modal__button-submit"
+            type="submit"
+            onClick={GolfClubRecommendation}
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>

@@ -1,20 +1,10 @@
 .content__wrapper {
-  background-color: green;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 70rem;
-  width: 70rem;
-  margin: 0px 50px 50px 50px;
-  border-radius: 20px;
-  border: green;
-  border-style: solid;
-  border-width: 15px;
+  align-items: center;
 }
 .page__wrapper {
-  /* max-width: 880px;
-  margin: 0 auto; */
+  justify-content: space-around;
 
   display: flex;
   justify-content: center;
