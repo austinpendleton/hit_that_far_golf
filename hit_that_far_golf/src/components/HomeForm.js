@@ -1,5 +1,6 @@
 import "../blocks/HomeForm.css";
 import AddClubForm from "./AddClubForm";
+import reset from "../images/reset-button.svg";
 
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -91,7 +92,7 @@ const HomeForm = ({ handleRecommendation }) => {
             type="reset"
             onClick={handleReset}
           >
-            Reset
+            <img src={reset} alt="reset" className="reset__button" />
           </button>
         </div>
       </form>
