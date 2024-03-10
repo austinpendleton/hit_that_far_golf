@@ -3,7 +3,7 @@
   position: absolute;
   top: 210px;
 }
-.logo__conatainer {
+.logo__container {
   height: 250px;
   display: flex;
   justify-content: center;
@@ -57,4 +57,32 @@
 }
 .navbar__home {
   text-decoration: none;
+}
+
+@media screen and (min-width: 375px) and (max-width: 822px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    top: 20px; /* Adjust top position as needed */
+  }
+
+  .logo__container {
+    margin-bottom: 0;
+    height: 175px;
+  }
+  .logo {
+    max-height: 150%;
+  }
+
+  .navbar__buttons {
+    flex-direction: row;
+    font-size: 20px;
+    margin-top: 0px;
+  }
+
+  .navbar__container {
+    margin-top: 160px;
+  }
 }

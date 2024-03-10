@@ -44,6 +44,7 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-style: italic;
   font-weight: 300;
+  margin-top: 350px;
 }
 .add__button:hover {
   cursor: pointer;

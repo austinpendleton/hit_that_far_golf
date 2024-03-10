@@ -54,3 +54,32 @@
   left: 90px;
   top: 30px;
 }
+
+@media screen and (min-width: 375px) and (max-width: 822px) {
+  .home__form-text {
+    font-size: 15px;
+  }
+
+  .home__input {
+    width: 55px;
+    height: 16px;
+    font-size: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-left: 5px;
+  }
+
+  .recommended__club {
+    margin-top: 30px;
+  }
+  .modal__button-submit {
+    width: 100px;
+  }
+
+  .modal__button-reset {
+    margin-left: 20px;
+  }
+  .home__form-container {
+    position: relative;
+  }
+}
