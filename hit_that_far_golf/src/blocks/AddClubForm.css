@@ -89,3 +89,8 @@
   margin-bottom: 34px;
   justify-content: flex-start;
 }
+@media screen and (min-width: 768px) {
+  .modal__content {
+    max-width: 600px;
+  }
+}
