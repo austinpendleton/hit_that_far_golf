@@ -34,6 +34,9 @@ function App() {
 
   const [recommendedClub, setRecommendedClub] = useState(null);
 
+  console.log(2);
+  console.log(recommendedClub);
+
   const handleclubsModal = () => {
     setActiveModal("addclubs");
   };
@@ -151,6 +154,15 @@ function App() {
   }, []);
 
   useEffect(() => {
+    api
+      .getclubsList()
+      .then((res) => {
+        setclubs(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     const token = localStorage.getItem("jwt");
     if (token) {
       handleToken(token).finally(() => setIsLoading(false));
@@ -158,7 +170,7 @@ function App() {
       setIsLoggedIn(false);
       setIsLoading(false);
     }
-  }, [setCurrentUser, setIsLoggedIn, handleToken]);
+  }, []);
 
   function handleYardageChange(event) {
     setYardageInput(event.target.value);
@@ -168,10 +180,18 @@ function App() {
     event.preventDefault();
     setRecommendedClub(recommendClub(yardageInput));
   }
-
   const handleSubmit = (event) => {
     event.preventDefault();
     GolfClubRecommendation(event);
+    handleRecommendation(yardageInput);
+    console.log("Form submitted");
+  };
+
+  const handleReset = () => {
+    console.log("Before reset:", recommendedClub);
+    setYardageInput("");
+    setRecommendedClub(null);
+    console.log("After reset:", recommendedClub);
   };
 
   const recommendClub = (yardageInput) => {
@@ -186,19 +206,22 @@ function App() {
     return recommendedClub;
   };
 
-  const handleRecommendation = (yardageInput) => {
-    console.log("Yardage input: ", yardageInput);
-    let recommendedClub = null;
-    for (const club of clubs) {
-      if (yardageInput >= club.yards) {
-        if (!recommendedClub || club.yards > recommendedClub.yards) {
-          recommendedClub = club;
+  const handleRecommendation = useCallback(
+    (yardageInput) => {
+      console.log("Yardage input: ", yardageInput);
+      let recommendedClub = null;
+      for (const club of clubs) {
+        if (yardageInput >= club.yards) {
+          if (!recommendedClub || club.yards > recommendedClub.yards) {
+            recommendedClub = club;
+          }
         }
       }
-    }
 
-    setRecommendedClub(recommendedClub);
-  };
+      setRecommendedClub(recommendedClub);
+    },
+    [clubs]
+  );
 
   const handleAddClub = (event) => {
     event.preventDefault();
@@ -235,6 +258,8 @@ function App() {
                     setYardageInput={setYardageInput}
                     handleAddClub={handleAddClub}
                     onSelectClub={handleSelectedClub}
+                    handleReset={handleReset}
+                    handleSubmit={handleSubmit}
                   />
                 }
               />

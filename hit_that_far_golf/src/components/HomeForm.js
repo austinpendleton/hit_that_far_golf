@@ -2,55 +2,70 @@ import "../blocks/HomeForm.css";
 import AddClubForm from "./AddClubForm";
 import reset from "../images/reset-button.svg";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const HomeForm = ({ handleRecommendation }) => {
-  const [yardageInput, setYardageInput] = useState("");
-  const [clubs, setClubs] = useState([]);
-  const [recommendedClub, setRecommendedClub] = useState(null);
-  const location = useLocation();
-
+const HomeForm = ({
+  handleYardageChange,
+  handleSubmit,
+  yardageInput,
+  recommendedClub,
+  handleReset,
+}) => {
   useEffect(() => {
-    if (location.pathname !== "/") {
-      setRecommendedClub(null);
-    }
-  }, [location.pathname]);
+    return () => {
+      handleReset();
+    };
+  }, []);
 
-  function handleYardageChange(event) {
-    setYardageInput(event.target.value);
-  }
+  // const [yardageInput, setYardageInput] = useState("");
+  // const [clubs, setClubs] = useState([]);
+  // const [recommendedClub, setRecommendedClub] = useState(null);
+  // const location = useLocation();
 
-  function GolfClubRecommendation(event) {
-    event.preventDefault();
-    setRecommendedClub(recommendClub(yardageInput));
-  }
+  // console.log(1231);
+  // console.log(recommendedClub);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    GolfClubRecommendation(event);
-    handleRecommendation(yardageInput);
-    console.log("Form submitted");
-  };
+  // useEffect(() => {
+  //   if (location.pathname !== "/") {
+  //     setRecommendedClub(null);
+  //   }
+  // }, [location.pathname]);
 
-  const handleReset = () => {
-    console.log("Before reset:", recommendedClub);
-    setYardageInput("");
-    setRecommendedClub(null);
-    console.log("After reset:", recommendedClub);
-  };
+  // function handleYardageChange(event) {
+  //   setYardageInput(event.target.value);
+  // }
 
-  const recommendClub = (yardageInput) => {
-    let recommendedClub = null;
-    for (const club of clubs) {
-      if (yardageInput >= club.yards) {
-        if (!recommendedClub || club.yards > recommendedClub.yards) {
-          recommendedClub = club;
-        }
-      }
-    }
-    return recommendedClub;
-  };
+  // function GolfClubRecommendation(event) {
+  //   event.preventDefault();
+  //   setRecommendedClub(recommendClub(yardageInput));
+  // }
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   GolfClubRecommendation(event);
+  //   handleRecommendation(yardageInput);
+  //   console.log("Form submitted");
+  // };
+
+  // const handleReset = () => {
+  //   console.log("Before reset:", recommendedClub);
+  //   setYardageInput("");
+  //   setRecommendedClub(null);
+  //   console.log("After reset:", recommendedClub);
+  // };
+
+  // const recommendClub = (yardageInput) => {
+  //   let recommendedClub = null;
+  //   for (const club of clubs) {
+  //     if (yardageInput >= club.yards) {
+  //       if (!recommendedClub || club.yards > recommendedClub.yards) {
+  //         recommendedClub = club;
+  //       }
+  //     }
+  //   }
+  //   return recommendedClub;
+  // };
 
   return (
     <div className="home__form-container">
