@@ -11,3 +11,8 @@
   justify-content: space-around;
   z-index: -1;
 }
+@media screen and (min-width: 320px) and (max-width: 822px) {
+  .footer {
+    font-size: 15px;
+  }
+}

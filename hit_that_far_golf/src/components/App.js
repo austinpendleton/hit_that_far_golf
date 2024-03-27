@@ -10,12 +10,10 @@ import AddClubForm from "./AddClubForm";
 import { Route, Routes, BrowserRouter, Switch } from "react-router-dom";
 import * as api from "../utils/api";
 import { checkToken, signIn } from "../utils/auth";
-import { avgDistance } from "../utils/constants";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import DeleteConfirmModal from "./DeleteConfirmModal";
-import ClubSection from "./ClubSection";
 import ClubCard from "./ClubCard";
 import ClubPreview from "./ClubPreview";
 import Footer from "./Footer";
@@ -196,6 +194,7 @@ function App() {
 
   const recommendClub = (yardageInput) => {
     let recommendedClub = null;
+
     for (const club of clubs) {
       if (yardageInput >= club.yards) {
         if (!recommendedClub || club.yards > recommendedClub.yards) {
@@ -257,7 +256,6 @@ function App() {
                     setRecommendedClub={setRecommendedClub}
                     setYardageInput={setYardageInput}
                     handleAddClub={handleAddClub}
-                    onSelectClub={handleSelectedClub}
                     handleReset={handleReset}
                     handleSubmit={handleSubmit}
                   />
@@ -276,9 +274,6 @@ function App() {
                   />
                 }
               />
-
-              {/* <MyBag path="/mybag" />
-            </Route> */}
             </Routes>
             {recommendedClub && (
               <div className="recommended__club">

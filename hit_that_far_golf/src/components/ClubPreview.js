@@ -2,13 +2,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 import "../blocks/ClubPreview.css";
 
-const ClubPreview = ({
-  item,
-  onClose,
-  handleOpenConfirmModal,
-  onDelete,
-  data,
-}) => {
+const ClubPreview = ({ item, onClose, handleOpenConfirmModal }) => {
   const currentUser = useContext(CurrentUserContext);
   const isUser = item.owner === currentUser._id;
   return (

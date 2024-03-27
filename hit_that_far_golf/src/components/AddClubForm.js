@@ -1,6 +1,5 @@
 import "../blocks/AddClubForm.css";
 import ModalWithForm from "./ModalWithForm";
-import { avgDistance } from "../utils/constants";
 import { useEffect, useState } from "react";
 
 function AddClubForm({ onClose, isOpen, onAddClub }) {

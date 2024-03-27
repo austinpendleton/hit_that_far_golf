@@ -1,13 +1,7 @@
 import "../blocks/ModalWithForm.css";
 import closeButton from "../images/close-button.svg";
 
-const DeleteConfirmModal = ({
-  onDelete,
-  item,
-  _id,
-  handleCloseConfirmModal,
-  handleDeleteItem,
-}) => {
+const DeleteConfirmModal = ({ onDelete, item, handleCloseConfirmModal }) => {
   const onCancel = () => {
     handleCloseConfirmModal();
   };

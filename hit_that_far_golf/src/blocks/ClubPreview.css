@@ -59,3 +59,16 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-style: italic;
 }
+@media screen and (min-width: 320px) and (max-width: 822px) {
+  .item__modal-image {
+    height: 150px;
+    width: 200px;
+  }
+  .modal__button-delete {
+    height: 50px;
+    width: 60px;
+    position: absolute;
+    left: 130px;
+    font-size: 15px;
+  }
+}

@@ -1,15 +1,11 @@
 import "../blocks/HomeForm.css";
-import AddClubForm from "./AddClubForm";
 import reset from "../images/reset-button.svg";
-
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 const HomeForm = ({
   handleYardageChange,
   handleSubmit,
   yardageInput,
-  recommendedClub,
   handleReset,
 }) => {
   useEffect(() => {
@@ -17,55 +13,6 @@ const HomeForm = ({
       handleReset();
     };
   }, []);
-
-  // const [yardageInput, setYardageInput] = useState("");
-  // const [clubs, setClubs] = useState([]);
-  // const [recommendedClub, setRecommendedClub] = useState(null);
-  // const location = useLocation();
-
-  // console.log(1231);
-  // console.log(recommendedClub);
-
-  // useEffect(() => {
-  //   if (location.pathname !== "/") {
-  //     setRecommendedClub(null);
-  //   }
-  // }, [location.pathname]);
-
-  // function handleYardageChange(event) {
-  //   setYardageInput(event.target.value);
-  // }
-
-  // function GolfClubRecommendation(event) {
-  //   event.preventDefault();
-  //   setRecommendedClub(recommendClub(yardageInput));
-  // }
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   GolfClubRecommendation(event);
-  //   handleRecommendation(yardageInput);
-  //   console.log("Form submitted");
-  // };
-
-  // const handleReset = () => {
-  //   console.log("Before reset:", recommendedClub);
-  //   setYardageInput("");
-  //   setRecommendedClub(null);
-  //   console.log("After reset:", recommendedClub);
-  // };
-
-  // const recommendClub = (yardageInput) => {
-  //   let recommendedClub = null;
-  //   for (const club of clubs) {
-  //     if (yardageInput >= club.yards) {
-  //       if (!recommendedClub || club.yards > recommendedClub.yards) {
-  //         recommendedClub = club;
-  //       }
-  //     }
-  //   }
-  //   return recommendedClub;
-  // };
 
   return (
     <div className="home__form-container">
@@ -82,17 +29,6 @@ const HomeForm = ({
             ></input>{" "}
             yards to the flag, I should probably use:
           </p>
-          <div className="recommended__club">
-            {recommendedClub && (
-              <div>
-                <h3>{recommendedClub.name}</h3>
-                <img
-                  src={recommendedClub.imageUrl}
-                  alt={recommendedClub.name}
-                />
-              </div>
-            )}
-          </div>
         </div>
         <div className="home__button-container">
           <button

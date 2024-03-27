@@ -55,9 +55,12 @@
   top: 30px;
 }
 
-@media screen and (min-width: 375px) and (max-width: 822px) {
+@media screen and (min-width: 320px) and (max-width: 822px) {
   .home__form-text {
     font-size: 15px;
+    max-width: 300px;
+    position: relative;
+    top: -60px;
   }
 
   .home__input {

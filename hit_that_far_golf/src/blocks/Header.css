@@ -20,13 +20,13 @@
   padding-right: 20px;
 }
 .header__name {
-  color: white;
+  color: yellow;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 30px;
   font-style: italic;
 }
 .header__button {
-  color: red;
+  color: white;
   border: none;
   background-color: transparent;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 375px) and (max-width: 822px) {
+@media screen and (min-width: 320px) and (max-width: 822px) {
   .header {
     flex-direction: row;
     justify-content: space-between;

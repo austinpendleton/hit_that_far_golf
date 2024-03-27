@@ -59,12 +59,12 @@
   text-decoration: none;
 }
 
-@media screen and (min-width: 375px) and (max-width: 822px) {
+@media screen and (min-width: 320px) and (max-width: 822px) {
   .navbar {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 30px 20px;
     top: 20px; /* Adjust top position as needed */
   }
 

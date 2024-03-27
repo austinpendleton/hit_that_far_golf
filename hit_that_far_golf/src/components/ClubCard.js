@@ -4,7 +4,9 @@ import "../blocks/ClubCard.css";
 
 const ClubCard = ({ item, onSelectClub, handleOpenConfirmModal, data }) => {
   const handleClubClick = () => {
-    onSelectClub(item);
+    if (onSelectClub) {
+      onSelectClub(item);
+    }
   };
   const currentUser = useContext(CurrentUserContext);
 
@@ -22,11 +24,6 @@ const ClubCard = ({ item, onSelectClub, handleOpenConfirmModal, data }) => {
       <div className="card__container">
         <div className="card__name">{item?.name}</div>
         <div className="card__name">{item?.yards} yards</div>
-        {/* {isUser && (
-          <button className="card__trash" onClick={handleOpenConfirmModal}>
-            DELETE
-          </button>
-        )} */}
       </div>
     </div>
   );
